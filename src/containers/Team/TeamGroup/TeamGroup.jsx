@@ -9,7 +9,7 @@ class TeamGroup extends Component {
     state = {
         teams: [],
         users: [],
-        selectedTeam: ''
+        selectedTeam: { id: 0 }
     }
 
     getTeams = () => {
@@ -19,6 +19,8 @@ class TeamGroup extends Component {
         ])
             .then(axios.spread((teamsRes, userRes) => {
                 const teams = teamsRes.data;
+                const defaulTeam = { name: "All Teams", id: 0 };
+                teams.unshift(defaulTeam);
                 const users = userRes.data;
                 this.setState({ teams, users });
             }))
@@ -30,12 +32,16 @@ class TeamGroup extends Component {
     async componentDidMount() {
         await this.getTeams();
     }
+
+    handleSelectTeam = (team) => {
+        this.setState({ selectedTeam: team })
+    }
     render() {
-        const { teams, users } = this.state;
+        const { teams, users, selectedTeam } = this.state;
         return (
             <div className="row">
                 <div className="col-3">
-                    <TeamList teams={teams} />
+                    <TeamList teams={teams} selectTeam={this.handleSelectTeam} selectedTeam={selectedTeam} />
                 </div>
                 <div className="col-9">
                     <UsersList users={users} />

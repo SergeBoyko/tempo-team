@@ -3,15 +3,17 @@ import React, { Component } from 'react';
 class TeamList extends Component {
     state = {}
     render() {
-        const { teams } = this.props;
+        const { teams, selectTeam, selectedTeam } = this.props;
         let listTeams = teams;
         listTeams = teams.map(team => (
-            <li key={team.id} className="list-group-item">{team.name}</li>
+            <li key={team.id}
+                onClick={() => selectTeam(team)}
+                className={(selectedTeam.id === team.id) ? "list-group-item active"
+                    : "list-group-item"}>{team.name}</li>
         )
         )
         return (
             <ul className="list-group">
-                <li className="list-group-item active">All Groups</li>
                 {listTeams}
             </ul>
         );
