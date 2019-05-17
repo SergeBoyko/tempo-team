@@ -4,19 +4,24 @@ import UsersList from '../UsersList/UsersList';
 import axios from "axios";
 
 
+
 class TeamGroup extends Component {
     state = {
-        teams: []
+        teams: [],
+        users: [],
+        selectedTeam: ''
     }
 
     getTeams = () => {
-        axios
-            .get("http://tempo-test.herokuapp.com/7d1d085e-dbee-4483-aa29-ca033ccae1e4/1/team/")
-            .then(response => {
-                const teams = response.data;
-                console.log('teams:', teams)
-                this.setState({ teams });
-            })
+        axios.all([
+            axios.get("/team/"),
+            axios.get("/user/")
+        ])
+            .then(axios.spread((teamsRes, userRes) => {
+                const teams = teamsRes.data;
+                const users = userRes.data;
+                this.setState({ teams, users });
+            }))
             .catch(function (error) {
                 console.log(error);
             });
@@ -26,14 +31,14 @@ class TeamGroup extends Component {
         await this.getTeams();
     }
     render() {
-        const { teams } = this.state;
+        const { teams, users } = this.state;
         return (
             <div className="row">
                 <div className="col-3">
                     <TeamList teams={teams} />
                 </div>
                 <div className="col-9">
-                    <UsersList />
+                    <UsersList users={users} />
                 </div>
             </div>
 

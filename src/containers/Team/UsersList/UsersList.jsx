@@ -1,29 +1,34 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
-class UsersList extends PureComponent {
-    state = {}
-    render() {
-        return (
+const UsersList = ({ users }) => {
+
+    const usersList = users.map((user, index) => (
+        <tr key={user.name + user.id}>
+            <th scope="row">{index + 1}</th>
+            <td>{user.name}</td>
+        </tr>
+    ))
+
+    let usersNumer = users.length;
+
+    return (
+
+        <React.Fragment>
+            <h2>There {usersNumer} users in list</h2>
             <table className="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Role</th>
-
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Team Lead</td>
-
-                    </tr>
+                    {usersList}
                 </tbody>
             </table>
-        );
-    }
+        </React.Fragment>
+    );
+
 }
 
 export default UsersList;
