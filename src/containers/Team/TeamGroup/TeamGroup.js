@@ -9,6 +9,8 @@ class TeamGroup extends Component {
     state = {
         teams: [],
         users: [],
+        teamsDetails: {},
+        groupdetails: false,
         selectedTeam: { id: 0 }
     }
 
@@ -33,18 +35,48 @@ class TeamGroup extends Component {
         await this.getTeams();
     }
 
+    async getTeam(teamId) {
+        try {
+            //  let teamId = this.props.match.params.id;
+            console.log('teamId params', teamId)
+            if (teamId === 0) {
+                console.log('teamId', teamId)
+                const teamsDetails = {};
+                this.setState({ teamsDetails, groupdetails: false });
+                return
+            }
+            let link = `/team/${teamId}`;
+
+            let response = await axios.get(link)
+            this.setState({
+                teamsDetails: response.data,
+                groupdetails: true
+            })
+        } catch (err) {
+            if (err.response && err.response.status === 404)
+                this.props.history.replace("/not-found");
+            console.error(err)
+        }
+    }
+
     handleSelectTeam = (team) => {
+        const teamId = team.id;
+        this.getTeam(teamId);
         this.setState({ selectedTeam: team })
     }
     render() {
-        const { teams, users, selectedTeam } = this.state;
+        const { teams, users, selectedTeam, groupdetails, teamsDetails } = this.state;
         return (
             <div className="row">
                 <div className="col-3">
                     <TeamList teams={teams} selectTeam={this.handleSelectTeam} selectedTeam={selectedTeam} />
                 </div>
                 <div className="col-9">
-                    <UsersList users={users} />
+                    <UsersList
+                        users={users}
+                        groupdetails={groupdetails}
+                        teamsDetails={teamsDetails}
+                    />
                 </div>
             </div>
 
