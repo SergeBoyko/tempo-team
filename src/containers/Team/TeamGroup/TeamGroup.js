@@ -68,10 +68,10 @@ class TeamGroup extends Component {
         const { teams, users, selectedTeam, groupdetails, teamsDetails } = this.state;
         return (
             <div className="row">
-                <div className="col-3">
+                <div className="col-12 col-md-3">
                     <TeamList teams={teams} selectTeam={this.handleSelectTeam} selectedTeam={selectedTeam} />
                 </div>
-                <div className="col-9">
+                <div className="col-12 col-md-9">
                     <UsersList
                         users={users}
                         groupdetails={groupdetails}
