@@ -2,3 +2,6 @@
 li.active a {
   color: white;
 }
+nav.navbar.navbar-expand-lg.search-form{
+  justify-content: flex-end;
+}

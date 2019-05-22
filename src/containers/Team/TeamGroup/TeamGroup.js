@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TeamList from '../TeamList/TeamList'
 import UsersList from '../UsersList/UsersList';
 import axios from "axios";
+import NavBar from '../../../components/NavBar';
 
 
 
@@ -11,6 +12,7 @@ class TeamGroup extends Component {
         users: [],
         teamsDetails: {},
         groupdetails: false,
+        searchQuery: "",
         selectedTeam: { id: 0 }
     }
 
@@ -61,22 +63,45 @@ class TeamGroup extends Component {
         this.getTeam(teamId);
         this.setState({ selectedTeam: team })
     }
+    handleSearch = query => {
+        this.setState({ searchQuery: query });
+    };
+    getPagedData = () => {
+        const { users, searchQuery } = this.state;
+        let filteredUsers;
+        if (searchQuery)
+            filteredUsers = users.filter(u =>
+                u.name.toLowerCase().startsWith(searchQuery.toLowerCase())
+            );
+        return { filteredUsers }
+    }
+
+
     render() {
-        const { teams, users, selectedTeam, groupdetails, teamsDetails } = this.state;
+        const { teams, selectedTeam, users, groupdetails, teamsDetails, searchQuery } = this.state;
+        const { filteredUsers } = this.getPagedData();
 
         return (
-            <div className="row">
-                <div className="col-12 col-md-3">
-                    <TeamList teams={teams} selectTeam={this.handleSelectTeam} selectedTeam={selectedTeam} />
+            <React.Fragment>
+                <div className="row">
+                    <div className="col-12">
+                        <NavBar value={searchQuery} onChange={this.handleSearch} />
+                    </div>
                 </div>
-                <div className="col-12 col-md-9">
-                    <UsersList
-                        users={users}
-                        groupdetails={groupdetails}
-                        teamsDetails={teamsDetails}
-                    />
+                <div className="row">
+
+                    <div className="col-12 col-md-3">
+                        <TeamList teams={teams} selectTeam={this.handleSelectTeam} selectedTeam={selectedTeam} />
+                    </div>
+                    <div className="col-12 col-md-9">
+                        <UsersList
+                            users={filteredUsers ? filteredUsers : users}
+                            groupdetails={groupdetails}
+                            teamsDetails={teamsDetails}
+                        />
+                    </div>
                 </div>
-            </div>
+            </React.Fragment>
 
         );
     }

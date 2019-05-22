@@ -4,7 +4,6 @@ import { Route, Redirect, Switch } from "react-router-dom";
 
 import TeamGroup from './containers/Team/TeamGroup/TeamGroup';
 import './App.css';
-import SeachBox from './components/SearchBox';
 import NotFound from './components/NotFound/NotFound';
 import UsersDetails from './containers/Team/UsersDetails/UsersDetails';
 
@@ -13,7 +12,6 @@ axios.defaults.baseURL = "http://tempo-test.herokuapp.com/7d1d085e-dbee-4483-aa2
 function App() {
   return (
     <div className="container">
-      <SeachBox />
       <Switch>
         <Route path="/team/:id" component={TeamGroup} />
         <Route path="/team" component={TeamGroup} />

@@ -35,7 +35,6 @@ class UsersDetails extends Component {
 
         if (groupdetails && user) {
 
-            let memberTeams;
             let teamLead = user.lead_teams.length;
             const membersTeams = user.member_teams.map(m => m).join(", ");
             const quantiyOtTeams = user.member_teams.length;
