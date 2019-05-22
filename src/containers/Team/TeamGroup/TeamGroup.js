@@ -37,8 +37,7 @@ class TeamGroup extends Component {
 
     async getTeam(teamId) {
         try {
-            //  let teamId = this.props.match.params.id;
-            console.log('teamId params', teamId)
+
             if (teamId === 0) {
                 console.log('teamId', teamId)
                 const teamsDetails = {};
@@ -53,8 +52,6 @@ class TeamGroup extends Component {
                 groupdetails: true
             })
         } catch (err) {
-            if (err.response && err.response.status === 404)
-                this.props.history.replace("/not-found");
             console.error(err)
         }
     }
@@ -66,6 +63,7 @@ class TeamGroup extends Component {
     }
     render() {
         const { teams, users, selectedTeam, groupdetails, teamsDetails } = this.state;
+
         return (
             <div className="row">
                 <div className="col-12 col-md-3">
