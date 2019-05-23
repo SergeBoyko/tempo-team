@@ -61,7 +61,7 @@ class TeamGroup extends Component {
     handleSelectTeam = (team) => {
         const teamId = team.id;
         this.getTeam(teamId);
-        this.setState({ selectedTeam: team })
+        this.setState({ selectedTeam: team, searchQuery: "" })
     }
     handleSearch = query => {
         this.setState({ searchQuery: query });
@@ -85,7 +85,7 @@ class TeamGroup extends Component {
             <React.Fragment>
                 <div className="row">
                     <div className="col-12">
-                        <NavBar value={searchQuery} onChange={this.handleSearch} />
+                        <NavBar value={searchQuery} onChange={this.handleSearch} groupdetails={groupdetails} />
                     </div>
                 </div>
                 <div className="row">
