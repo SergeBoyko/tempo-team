@@ -11,7 +11,7 @@ axios.defaults.baseURL = "http://tempo-test.herokuapp.com/7d1d085e-dbee-4483-aa2
 
 function App() {
   return (
-    <div className="container">
+    <div className="container" data-test='App'>
       <Switch>
         <Route path="/team/:id" component={TeamGroup} />
         <Route path="/team" component={TeamGroup} />
