@@ -43,7 +43,7 @@ const UsersList = ({ users, teamsDetails, groupdetails }) => {
             {!groupdetails && users && (<h2>There {usersNumer} users in list</h2>)}
             {groupdetails && teamsDetails && (<h2>There {teamsDetails.members.length} members in "{teamsDetails.name}" list</h2>)}
 
-            <table className="table table-striped">
+            <table className="table table-striped" data-test="UsersList">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -65,7 +65,7 @@ const UsersList = ({ users, teamsDetails, groupdetails }) => {
 UsersList.propTypes = {
     users: PropTypes.array,
     teamsDetails: PropTypes.object,
-    groupdetails: PropTypes.bool
+    groupdetails: PropTypes.bool.isRequired
 }
 
 export default UsersList;
