@@ -1,8 +1,10 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 const SearchBox = ({ value, onChange }) => {
     return (
         <input
+            data-test="SearchBox"
             type="text"
             name="query"
             className="form-control my-3"
@@ -12,5 +14,10 @@ const SearchBox = ({ value, onChange }) => {
         />
     );
 };
+
+SearchBox.propTypes = {
+    value: PropTypes.string,
+    onChange: PropTypes.func
+}
 
 export default SearchBox;

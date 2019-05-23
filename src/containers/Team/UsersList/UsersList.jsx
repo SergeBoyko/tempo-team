@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const UsersList = ({ users, teamsDetails, groupdetails }) => {
 
@@ -59,6 +60,12 @@ const UsersList = ({ users, teamsDetails, groupdetails }) => {
 
         </React.Fragment>
     );
+}
+
+UsersList.propTypes = {
+    users: PropTypes.array,
+    teamsDetails: PropTypes.object,
+    groupdetails: PropTypes.bool
 }
 
 export default UsersList;

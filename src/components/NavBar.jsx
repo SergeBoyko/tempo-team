@@ -1,5 +1,6 @@
 import React from 'react';
-import SearchBox from '../components/SeachBox/SeachBox'
+import PropTypes from 'prop-types';
+import SearchBox from '../components/SeachBox/SeachBox';
 
 const NavBar = ({ value, onChange }) => {
 
@@ -11,6 +12,11 @@ const NavBar = ({ value, onChange }) => {
         </nav >
     );
 
+}
+
+NavBar.propTypes = {
+    value: PropTypes.string,
+    onChange: PropTypes.func
 }
 
 export default NavBar;
