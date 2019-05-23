@@ -16,7 +16,7 @@ const TeamList = ({ teams, selectTeam, selectedTeam }) => {
         </li>
     ))
     return (
-        <ul className="list-group">
+        <ul className="list-group" data-test="TeamList">
             {listTeams}
         </ul>
     );

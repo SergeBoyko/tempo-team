@@ -40,13 +40,13 @@ class UsersDetails extends Component {
             const quantiyOtTeams = user.member_teams.length;
 
             if (quantiyOtTeams === 1) {
-                showString = <p className="card-text">Member of team "{membersTeams}"</p>
+                showString = <p className="card-text" data-test="UsersDetailsMemeber">Member of team "{membersTeams}"</p>
             }
             if (quantiyOtTeams > 1) {
-                showString = <p className="card-text">Member of teams "{membersTeams}"</p>
+                showString = <p className="card-text" data-test="UsersDetailsMemeber">Member of teams "{membersTeams}"</p>
             }
             if (quantiyOtTeams === 0) {
-                showString = <p className="card-text">Member of no teams</p>
+                showString = <p className="card-text" data-test="UsersDetailsMemeber">Member of no teams</p>
             }
             if (teamLead > 0) {
                 showLead = <p className="card-text">Team Lead</p>
@@ -54,11 +54,11 @@ class UsersDetails extends Component {
         }
 
         return (
-            <div className="card" >
+            <div className="card" data-test="UsersDetails">
                 <div className="card-body">
-                    <h5 className="card-title">{user.name}</h5>
-                    <p className="card-title">Username: "{user.username}"</p>
-                    <p className="card-title">ID: "{user.id}"</p>
+                    <h5 className="card-title" data-test="UsersDetailsHeader">{user.name}</h5>
+                    <p className="card-title" data-test="UsersDetailsUsername">Username: "{user.username}"</p>
+                    <p className="card-title" data-test="UsersDetailsID">ID: "{user.id}"</p>
                     {showString}
                     {showLead}
                     <button onClick={this.handleSendToList} className="btn btn-primary">List of Teams</button>
