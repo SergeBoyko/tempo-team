@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TeamList from '../TeamList/TeamList'
 import UsersList from '../UsersList/UsersList';
 import axios from "axios";
-import NavBar from '../../../components/NavBar';
+import NavBar from '../../../components/NavBar/NavBar';
 
 
 
