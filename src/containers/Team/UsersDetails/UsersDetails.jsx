@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Spinner from '../../../utiles/Spinner/Spinner';
 
 
 class UsersDetails extends Component {
     state = {
         user: [],
+        loading: true,
         groupdetails: false
     }
 
@@ -16,7 +18,7 @@ class UsersDetails extends Component {
         try {
             let response = await axios.get(`/user/${this.props.match.params.id}`);
             const user = response.data;
-            this.setState({ user, groupdetails: true });
+            this.setState({ user, groupdetails: true, loading: false });
         } catch (error) {
             console.log(error);
         }
@@ -28,7 +30,7 @@ class UsersDetails extends Component {
 
 
     render() {
-        const { user, groupdetails } = this.state;
+        const { user, groupdetails, loading } = this.state;
 
         let showString;
         let showLead;
@@ -56,6 +58,7 @@ class UsersDetails extends Component {
         return (
             <div className="card" data-test="UsersDetails">
                 <div className="card-body">
+                    {loading ? <Spinner /> : null}
                     <h5 className="card-title" data-test="UsersDetailsHeader">{user.name}</h5>
                     <p className="card-title" data-test="UsersDetailsUsername">Username: "{user.username}"</p>
                     <p className="card-title" data-test="UsersDetailsID">ID: "{user.id}"</p>

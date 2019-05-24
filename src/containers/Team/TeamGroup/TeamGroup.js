@@ -3,6 +3,7 @@ import TeamList from '../TeamList/TeamList'
 import UsersList from '../UsersList/UsersList';
 import axios from "axios";
 import NavBar from '../../../components/NavBar/NavBar';
+import Spinner from '../../../utiles/Spinner/Spinner';
 
 
 
@@ -13,6 +14,7 @@ class TeamGroup extends Component {
         teamsDetails: {},
         groupdetails: false,
         searchQuery: "",
+        loading: true,
         selectedTeam: { id: 0 }
     }
 
@@ -26,7 +28,7 @@ class TeamGroup extends Component {
                 const defaulTeam = { name: "All Teams", id: 0 };
                 teams.unshift(defaulTeam);
                 const users = userRes.data;
-                this.setState({ teams, users });
+                this.setState({ teams, users, loading: false });
             }))
             .catch(function (error) {
                 console.log(error);
@@ -41,7 +43,6 @@ class TeamGroup extends Component {
         try {
 
             if (teamId === 0) {
-                console.log('teamId', teamId)
                 const teamsDetails = {};
                 this.setState({ teamsDetails, groupdetails: false });
                 return
@@ -78,11 +79,12 @@ class TeamGroup extends Component {
 
 
     render() {
-        const { teams, selectedTeam, users, groupdetails, teamsDetails, searchQuery } = this.state;
+        const { teams, selectedTeam, users, groupdetails, teamsDetails, searchQuery, loading } = this.state;
         const { filteredUsers } = this.getPagedData();
 
         return (
             <React.Fragment>
+                {loading ? <Spinner /> : null}
                 <div className="row" data-test="TeamGroupNavBar">
                     <div className="col-12">
                         <NavBar value={searchQuery} onChange={this.handleSearch} groupdetails={groupdetails} />
