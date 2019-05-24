@@ -1,68 +1,46 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hi,
+I’m tried my best by using your conditions for this task.
 
-## Available Scripts
+See on line:
 
-In the project directory, you can run:
+https://tempo-team-demo.herokuapp.com/team
 
-### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Technologies are used:
+1)	Bootstrap (for minimum responisve design)
+2)	PropTypes
+3)	Check-prop-types ( allows used PropTypes test with unit test together)
+4)	Enzyme (unit test)
+5)	Axios (http service)
+6)  Tried not to forget about performance (axios call, for example)
+7)	Loading Spinner for bonus (joke !  😉 )
 
-### `npm test`
+Description:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Page by default: 
+1)	‘team’, you are seeing NavBar with SearchBox for looking users by name (it is visible only for list of All Users)
+2)	You are seeing left panel for chose name of team, by default is “All Teams” selected
+3)	In Header text with numbers of users
+4)	In List of Users you seeing serial number, Name and Username
 
-### `npm run build`
+After choosing some team by click:
+1)	Header text changed with name of team and number of members.
+2)	Link are changed by “team/IDofTeam”
+3)	Click by “All Teams” change link to “team/0”
+4)	List of members showing all members of team include new column “Role” with “Team Lead” 
+5)	SearchBox are hidden
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+After choosing some team by click:
+1)	Link are changed to “user/id”. Also you can navigate right by link by past it in browser.
+2)	You are seeing full description of details of user: 
+i)	Name
+ii)	Username
+iii)	Id
+iv)	Member of team (this text changes depending of context: one member, two and more, or no member)
+v)	If member is Team Lead.
+vi)	There are button “List of Teams” to going to page “team”. I’m using there  props.history in click just for showing my skills with router.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Unit Test:
+1)	I’ve used Enzyme for shallow test of component by passing props
+2)	I’ve used Router unit test in App.test.jsx
