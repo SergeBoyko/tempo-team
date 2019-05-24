@@ -7,7 +7,7 @@ import './App.css';
 import NotFound from './components/NotFound/NotFound';
 import UsersDetails from './containers/Team/UsersDetails/UsersDetails';
 
-axios.defaults.baseURL = "http://tempo-test.herokuapp.com/7d1d085e-dbee-4483-aa29-ca033ccae1e4/1"
+axios.defaults.baseURL = "https://tempo-test.herokuapp.com/7d1d085e-dbee-4483-aa29-ca033ccae1e4/1"
 
 function App() {
   return (
