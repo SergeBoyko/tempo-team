@@ -56,17 +56,19 @@ class UsersDetails extends Component {
         }
 
         return (
-            <div className="card" data-test="UsersDetails">
-                <div className="card-body">
-                    {loading ? <Spinner /> : null}
-                    <h5 className="card-title" data-test="UsersDetailsHeader">{user.name}</h5>
-                    <p className="card-title" data-test="UsersDetailsUsername">Username: "{user.username}"</p>
-                    <p className="card-title" data-test="UsersDetailsID">ID: "{user.id}"</p>
-                    {showString}
-                    {showLead}
-                    <button onClick={this.handleSendToList} className="btn btn-primary">List of Teams</button>
+            <React.Fragment>
+                {loading ? <Spinner /> : null}
+                <div className="card" data-test="UsersDetails">
+                    <div className="card-body">
+                        <h5 className="card-title" data-test="UsersDetailsHeader">{user.name}</h5>
+                        <p className="card-title" data-test="UsersDetailsUsername">Username: "{user.username}"</p>
+                        <p className="card-title" data-test="UsersDetailsID">ID: "{user.id}"</p>
+                        {showString}
+                        {showLead}
+                        <button onClick={this.handleSendToList} className="btn btn-primary">List of Teams</button>
+                    </div>
                 </div>
-            </div>
+            </React.Fragment>
         );
     }
 }

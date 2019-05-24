@@ -84,7 +84,9 @@ class TeamGroup extends Component {
 
         return (
             <React.Fragment>
-                {loading ? <Spinner /> : null}
+                <div style={{ "position": "absolute", "top": "0", "zIndex": "100", "width": "100%" }}>
+                    {loading ? <Spinner /> : null}
+                </div>
                 <div className="row" data-test="TeamGroupNavBar">
                     <div className="col-12">
                         <NavBar value={searchQuery} onChange={this.handleSearch} groupdetails={groupdetails} />
