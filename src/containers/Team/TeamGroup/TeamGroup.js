@@ -83,17 +83,16 @@ class TeamGroup extends Component {
 
         return (
             <React.Fragment>
-                <div className="row">
+                <div className="row" data-test="TeamGroupNavBar">
                     <div className="col-12">
                         <NavBar value={searchQuery} onChange={this.handleSearch} groupdetails={groupdetails} />
                     </div>
                 </div>
-                <div className="row">
-
+                <div className="row" data-test="TeamGroupTeamList">
                     <div className="col-12 col-md-3">
                         <TeamList teams={teams} selectTeam={this.handleSelectTeam} selectedTeam={selectedTeam} />
                     </div>
-                    <div className="col-12 col-md-9">
+                    <div className="col-12 col-md-9" data-test="TeamGroupUserList">
                         <UsersList
                             users={filteredUsers ? filteredUsers : users}
                             groupdetails={groupdetails}
